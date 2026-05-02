@@ -1,11 +1,40 @@
-// Dados do Cardápio
+// Dados do Cardápio com Imagens
 const products = [
-    { id: 'playzinho', name: 'Playzinho', price: 12, limit: 1, desc: '1 opção de cada item' },
-    { id: 'playzao', name: 'Playzão', price: 20, limit: 2, desc: 'Até 2 opções de cada item' },
-    { id: 'playtop', name: 'Playtop', price: 30, limit: 3, desc: 'Até 3 opções de cada item' },
-    { id: 'playturbo', name: 'Playturbo', price: 45, limit: 4, desc: 'Até 4 opções de cada item' }
+    { 
+        id: 'playzinho', 
+        name: 'Playzinho', 
+        price: 12, 
+        limit: 1, 
+        desc: '1 opção de cada item',
+        img: 'https://images.unsplash.com/photo-1590130985226-62157581abcf?w=200&h=200&fit=crop'
+    },
+    { 
+        id: 'playzao', 
+        name: 'Playzão', 
+        price: 20, 
+        limit: 2, 
+        desc: 'Até 2 opções de cada item',
+        img: 'https://images.unsplash.com/photo-1626074964019-2aa1738d2a6a?w=200&h=200&fit=crop'
+    },
+    { 
+        id: 'playtop', 
+        name: 'Playtop', 
+        price: 30, 
+        limit: 3, 
+        desc: 'Até 3 opções de cada item',
+        img: 'https://images.unsplash.com/photo-1556689622-487fb682662c?w=200&h=200&fit=crop'
+    },
+    { 
+        id: 'playturbo', 
+        name: 'Playturbo', 
+        price: 45, 
+        limit: 4, 
+        desc: 'Até 4 opções de cada item',
+        img: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=200&h=200&fit=crop'
+    }
 ];
 
+// As categorias continuam as mesmas
 const components = [
     { id: 'cremes', name: 'Cremes', items: ['Açaí', 'Cupuaçu', 'Ninho'] },
     { id: 'frutas', name: 'Frutas', items: ['Morango', 'Banana', 'Manga', 'Maçã', 'Kiwi', 'Uva'] },
@@ -23,6 +52,26 @@ const paidExtras = [
 let cart = [];
 let currentProduct = null;
 let currentExtrasCost = 0;
+
+// Inicializa a tela desenhando os produtos COM as imagens
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('products-container');
+    products.forEach(p => {
+        container.innerHTML += `
+            <div class="product-card" onclick="openProductModal('${p.id}')">
+                <img src="${p.img}" class="product-img" alt="${p.name}">
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p>${p.desc}</p>
+                    <span class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
+                </div>
+                <div style="color: var(--acai-purple);"><i class="fas fa-plus-circle fa-2x"></i></div>
+            </div>
+        `;
+    });
+});
+
+// ... O RESTO DO SEU SCRIPT.JS CONTINUA EXATAMENTE IGUAL AQUI PARA BAIXO ...
 
 // Inicializa a tela
 document.addEventListener('DOMContentLoaded', () => {
