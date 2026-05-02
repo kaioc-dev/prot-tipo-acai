@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Açaí - Cardápio Online</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <h1>Play <span>Açaí</span></h1>
+            <p>O melhor que tá tendo!</p>
+        </div>
+    </header>
+
+    <nav class="categories">
+        <button class="cat-btn active" onclick="filterCategory('combos')">Combos</button>
+        <button class="cat-btn" onclick="filterCategory('frutas')">Frutas</button>
+        <button class="cat-btn" onclick="filterCategory('adicionais')">Adicionais</button>
+    </nav>
+
+    <main class="menu-container">
+        <section id="combos" class="menu-section">
+            <h2 class="section-title">Nossos Copos</h2>
+            
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Playzinho</h3>
+                    <p>1ª opção de cada categoria.</p>
+                    <span class="price">R$ 12,00</span>
+                </div>
+                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100?text=Playzinho')"></div>
+                <button class="add-btn">+</button>
+            </div>
+
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Playtôp <span class="badge">Mais Vendido</span></h3>
+                    <p>3 opções de cada categoria.</p>
+                    <span class="price">R$ 30,00</span>
+                </div>
+                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100?text=Playtop')"></div>
+                <button class="add-btn">+</button>
+            </div>
+        </section>
+
+        <section id="adicionais" class="menu-section">
+            <h2 class="section-title">Adicionais Extras</h2>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Nutella</h3>
+                    <p>Creme de avelã original.</p>
+                    <span class="price">R$ 5,00</span>
+                </div>
+                <button class="add-btn">+</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="cart-bar">
+            <div class="cart-info">
+                <i class="fas fa-shopping-basket"></i>
+                <span>Ver Carrinho</span>
+            </div>
+            <span class="total">R$ 0,00</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
