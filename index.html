@@ -29,7 +29,13 @@
 
         
         .app-header {
-            background: var(--acai-purple); color: white; padding: 30px 20px; text-align: center;
+            /* Imagem de fundo adicionada com leve gradiente escuro para melhorar a leitura do texto */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('fundoacai.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: var(--acai-purple); /* Fallback de cor caso a imagem demore a carregar */
+            
+            color: white; padding: 30px 20px; text-align: center;
             border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
