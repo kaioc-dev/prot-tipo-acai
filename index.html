@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Play Açaí - Cardápio Online</title>
+    <title>Play Açaí - O melhor que tá tendo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -13,81 +13,77 @@
         <div class="logo-container">
             <h1>Play <span>Açaí</span></h1>
             <p>O melhor que tá tendo!</p>
+            <a href="https://instagram.com/acaidoplayoficial" target="_blank" class="insta-link">
+                <i class="fab fa-instagram"></i> @acaidoplayoficial
+            </a>
         </div>
     </header>
 
-    <nav class="categories">
-        <button class="cat-btn active" data-target="combos">Combos</button>
-        <button class="cat-btn" data-target="frutas">Frutas</button>
-        <button class="cat-btn" data-target="adicionais">Adicionais</button>
-    </nav>
-
-    <main class="menu-container">
-        <section id="combos" class="menu-section active">
-            <h2 class="section-title">Nossos Copos</h2>
-            
-            <div class="product-card">
-                <div class="product-info">
-                    <h3>Playzinho</h3>
-                    <p>1ª opção de cada categoria. Ideal para matar a vontade.</p>
-                    <span class="price">R$ 12,00</span>
-                </div>
-                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100/5c148c/ffffff?text=Playzinho')"></div>
-                <button class="add-btn"><i class="fas fa-plus"></i></button>
-            </div>
-
-            <div class="product-card">
-                <div class="product-info">
-                    <h3>Playtôp <span class="badge">Mais Vendido</span></h3>
-                    <p>3 opções de cada categoria. O favorito da galera.</p>
-                    <span class="price">R$ 30,00</span>
-                </div>
-                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100/5c148c/ffffff?text=Playtop')"></div>
-                <button class="add-btn"><i class="fas fa-plus"></i></button>
-            </div>
-        </section>
-
-        <section id="frutas" class="menu-section">
-            <h2 class="section-title">Frutas Frescas</h2>
-            <div class="product-card">
-                <div class="product-info">
-                    <h3>Morango</h3>
-                    <p>Porção extra de morangos selecionados.</p>
-                    <span class="price">R$ 4,00</span>
-                </div>
-                <button class="add-btn"><i class="fas fa-plus"></i></button>
-            </div>
-        </section>
-
-        <section id="adicionais" class="menu-section">
-            <h2 class="section-title">Adicionais Extras</h2>
-            <div class="product-card">
-                <div class="product-info">
-                    <h3>Nutella</h3>
-                    <p>Creme de avelã original.</p>
-                    <span class="price">R$ 5,00</span>
-                </div>
-                <button class="add-btn"><i class="fas fa-plus"></i></button>
-            </div>
-            <div class="product-card">
-                <div class="product-info">
-                    <h3>Paçoca</h3>
-                    <p>Paçoca rolha esfarelada.</p>
-                    <span class="price">R$ 2,00</span>
-                </div>
-                <button class="add-btn"><i class="fas fa-plus"></i></button>
-            </div>
-        </section>
+    <main class="menu-container" id="menu-list">
+        <h2 class="section-title">Nossos Copos</h2>
+        <div id="products-container"></div>
     </main>
 
-    <footer>
-        <div class="cart-bar">
-            <div class="cart-info">
-                <i class="fas fa-shopping-basket"></i>
-                <span id="cart-count">0 itens</span>
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Produto</h2>
+                <p id="modal-desc">Escolha seus acompanhamentos</p>
+                <button class="close-btn" onclick="closeModal('product-modal')">&times;</button>
             </div>
-            <span class="total">Ver Carrinho</span>
+            <div class="modal-body" id="options-container">
+                </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="addToCart()">Adicionar ao Carrinho - R$ <span id="modal-price">0,00</span></button>
+            </div>
         </div>
+    </div>
+
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Seu Pedido</h2>
+                <button class="close-btn" onclick="closeModal('cart-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cart-items"></div>
+                <div class="cart-total">Total: R$ <span id="cart-total-price">0,00</span></div>
+                
+                <h3 class="checkout-title">Finalizar Pedido</h3>
+                <form id="checkout-form">
+                    <input type="text" id="cliente-nome" placeholder="Seu Nome Completo" required>
+                    
+                    <select id="tipo-entrega" onchange="toggleAddress()" required>
+                        <option value="">Como deseja receber?</option>
+                        <option value="entrega">Entrega em Domicílio</option>
+                        <option value="retirada">Retirar no Local</option>
+                    </select>
+
+                    <input type="text" id="cliente-endereco" placeholder="Rua, Número, Bairro, Referência" style="display:none;">
+
+                    <select id="forma-pagamento" onchange="toggleTroco()" required>
+                        <option value="">Forma de Pagamento</option>
+                        <option value="pix">Pix</option>
+                        <option value="credito">Cartão de Crédito</option>
+                        <option value="debito">Cartão de Débito</option>
+                        <option value="dinheiro">Dinheiro</option>
+                    </select>
+
+                    <input type="number" id="cliente-troco" placeholder="Troco para quanto?" style="display:none;">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Enviar Pedido</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="cart-bar" class="cart-bar hidden" onclick="openCart()">
+        <div class="cart-info">
+            <i class="fas fa-shopping-basket"></i>
+            <span id="cart-count">0 itens</span>
+        </div>
+        <div class="cart-total-bar">R$ <span id="bar-total">0,00</span></div>
     </footer>
 
     <script src="script.js"></script>
