@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <header>
+    <header class="app-header">
         <div class="logo-container">
             <h1>Play <span>Açaí</span></h1>
             <p>O melhor que tá tendo!</p>
@@ -17,33 +17,45 @@
     </header>
 
     <nav class="categories">
-        <button class="cat-btn active" onclick="filterCategory('combos')">Combos</button>
-        <button class="cat-btn" onclick="filterCategory('frutas')">Frutas</button>
-        <button class="cat-btn" onclick="filterCategory('adicionais')">Adicionais</button>
+        <button class="cat-btn active" data-target="combos">Combos</button>
+        <button class="cat-btn" data-target="frutas">Frutas</button>
+        <button class="cat-btn" data-target="adicionais">Adicionais</button>
     </nav>
 
     <main class="menu-container">
-        <section id="combos" class="menu-section">
+        <section id="combos" class="menu-section active">
             <h2 class="section-title">Nossos Copos</h2>
             
             <div class="product-card">
                 <div class="product-info">
                     <h3>Playzinho</h3>
-                    <p>1ª opção de cada categoria.</p>
+                    <p>1ª opção de cada categoria. Ideal para matar a vontade.</p>
                     <span class="price">R$ 12,00</span>
                 </div>
-                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100?text=Playzinho')"></div>
-                <button class="add-btn">+</button>
+                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100/5c148c/ffffff?text=Playzinho')"></div>
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
             </div>
 
             <div class="product-card">
                 <div class="product-info">
                     <h3>Playtôp <span class="badge">Mais Vendido</span></h3>
-                    <p>3 opções de cada categoria.</p>
+                    <p>3 opções de cada categoria. O favorito da galera.</p>
                     <span class="price">R$ 30,00</span>
                 </div>
-                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100?text=Playtop')"></div>
-                <button class="add-btn">+</button>
+                <div class="product-img" style="background-image: url('https://via.placeholder.com/100x100/5c148c/ffffff?text=Playtop')"></div>
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
+            </div>
+        </section>
+
+        <section id="frutas" class="menu-section">
+            <h2 class="section-title">Frutas Frescas</h2>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Morango</h3>
+                    <p>Porção extra de morangos selecionados.</p>
+                    <span class="price">R$ 4,00</span>
+                </div>
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
             </div>
         </section>
 
@@ -55,7 +67,15 @@
                     <p>Creme de avelã original.</p>
                     <span class="price">R$ 5,00</span>
                 </div>
-                <button class="add-btn">+</button>
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
+            </div>
+            <div class="product-card">
+                <div class="product-info">
+                    <h3>Paçoca</h3>
+                    <p>Paçoca rolha esfarelada.</p>
+                    <span class="price">R$ 2,00</span>
+                </div>
+                <button class="add-btn"><i class="fas fa-plus"></i></button>
             </div>
         </section>
     </main>
@@ -64,9 +84,9 @@
         <div class="cart-bar">
             <div class="cart-info">
                 <i class="fas fa-shopping-basket"></i>
-                <span>Ver Carrinho</span>
+                <span id="cart-count">0 itens</span>
             </div>
-            <span class="total">R$ 0,00</span>
+            <span class="total">Ver Carrinho</span>
         </div>
     </footer>
 
