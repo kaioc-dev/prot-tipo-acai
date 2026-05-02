@@ -79,3 +79,27 @@ body { background-color: var(--bg-color); padding-bottom: 90px; color: var(--tex
     cursor: pointer; z-index: 100; font-weight: bold;
 }
 .cart-bar.hidden { display: none; }
+/* Atualização das Fontes da Logo */
+.logo-container h1 { 
+    font-size: 2.8rem; 
+    font-family: 'Pacifico', cursive; /* Fonte cursiva para o "Play" */
+    font-weight: normal;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.logo-container h1 span { 
+    font-family: 'Fredoka', sans-serif; /* Fonte gordinha para o "Açaí" */
+    color: var(--accent-pink); 
+    font-weight: 600;
+}
+
+/* Estilo para as imagens dos copos na lista */
+.product-img {
+    width: 85px;
+    height: 85px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-right: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
