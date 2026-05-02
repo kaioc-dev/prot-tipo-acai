@@ -23,19 +23,20 @@
             --border-color: #E0E0E0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
         body { background-color: var(--bg-color); padding-bottom: 90px; color: var(--text-dark); }
 
+        /* Cabeçalho */
         .app-header {
-            background: var(--acai-purple); color: white; padding: 25px 20px; text-align: center;
+            background: var(--acai-purple); color: white; padding: 30px 20px; text-align: center;
+            border-radius: 0 0 20px 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
         
         .logo-container h1 { 
-            font-size: 2.8rem; 
+            font-size: 3rem; 
             font-family: 'Pacifico', cursive;
             font-weight: normal;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             margin-bottom: 5px;
         }
 
@@ -45,74 +46,77 @@
             font-weight: 600;
         }
         
-        .insta-link { display: inline-block; margin-top: 10px; color: white; text-decoration: none; font-size: 0.9rem; background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;}
+        .insta-link { 
+            display: inline-block; margin-top: 15px; color: white; text-decoration: none; 
+            font-size: 0.9rem; background: rgba(255,255,255,0.2); padding: 6px 18px; border-radius: 25px;
+            transition: 0.3s;
+        }
 
-        .menu-container { padding: 15px; max-width: 800px; margin: 0 auto; }
-        .section-title { margin: 15px 0; font-size: 1.3rem; font-weight: 700; }
+        /* Lista de Produtos */
+        .menu-container { padding: 15px; max-width: 600px; margin: 0 auto; }
+        .section-title { margin: 20px 0 15px; font-size: 1.4rem; font-weight: 700; color: var(--acai-purple); }
 
         .product-card {
-            background: var(--card-bg); border-radius: 10px; padding: 15px; display: flex;
-            align-items: center; margin-bottom: 12px; border: 1px solid var(--border-color);
-            cursor: pointer; transition: transform 0.1s;
+            background: var(--card-bg); border-radius: 12px; padding: 15px; display: flex;
+            align-items: center; margin-bottom: 15px; border: 1px solid var(--border-color);
+            cursor: pointer; transition: 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
-        .product-card:active { transform: scale(0.98); }
+        .product-card:active { transform: scale(0.97); }
         
         .product-img {
-            width: 85px; height: 85px; border-radius: 12px; object-fit: cover;
-            margin-right: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 80px; height: 80px; border-radius: 10px; object-fit: cover;
+            margin-right: 15px; background-color: #eee;
         }
 
         .product-info { flex: 1; }
-        .product-info h3 { font-size: 1.1rem; color: var(--acai-purple); }
-        .product-info p { font-size: 0.85rem; color: var(--text-muted); margin: 5px 0; }
-        .price { font-weight: 700; color: var(--text-dark); }
+        .product-info h3 { font-size: 1.2rem; color: var(--acai-purple); margin-bottom: 4px; }
+        .product-info p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.3; }
+        .price { display: block; margin-top: 8px; font-weight: 700; color: #2e7d32; font-size: 1.1rem; }
 
-        /* Modais */
+        /* Estilo do Modal */
         .modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: flex-end;
+            background: rgba(0,0,0,0.6); z-index: 1000; justify-content: center; align-items: flex-end;
         }
         .modal.active { display: flex; }
         .modal-content {
-            background: var(--card-bg); width: 100%; max-width: 800px; max-height: 90vh;
+            background: var(--card-bg); width: 100%; max-width: 600px; max-height: 85vh;
             border-radius: 20px 20px 0 0; display: flex; flex-direction: column;
             animation: slideUp 0.3s ease-out;
         }
         @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
         .modal-header { padding: 20px; border-bottom: 1px solid var(--border-color); position: relative; }
-        .close-btn { position: absolute; right: 20px; top: 20px; background: none; border: none; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
+        .close-btn { position: absolute; right: 20px; top: 20px; background: none; border: none; font-size: 1.8rem; color: var(--text-muted); cursor: pointer; }
         .modal-body { padding: 20px; overflow-y: auto; flex: 1; }
-        .modal-footer { padding: 20px; border-top: 1px solid var(--border-color); background: var(--card-bg); }
+        .modal-footer { padding: 20px; border-top: 1px solid var(--border-color); }
 
-        .category-group { margin-bottom: 20px; }
-        .category-group h4 { background: #f0f0f0; padding: 10px; border-radius: 8px; margin-bottom: 10px; font-size: 0.95rem; color: var(--acai-purple);}
-        .option-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
-        .option-item label { flex: 1; margin-left: 10px; font-size: 0.95rem; }
-        
-        .option-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--acai-purple); }
+        .category-group { margin-bottom: 25px; }
+        .category-group h4 { background: #f4f4f4; padding: 10px; border-radius: 8px; margin-bottom: 12px; font-size: 1rem; color: var(--acai-purple); border-left: 4px solid var(--accent-pink); }
+        .option-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid #f9f9f9; }
+        .option-item label { flex: 1; margin-left: 12px; font-size: 1rem; cursor: pointer; }
+        .option-item input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--acai-purple); }
 
         .btn-primary {
             width: 100%; background: var(--acai-purple); color: white; border: none;
-            padding: 15px; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+            padding: 16px; border-radius: 12px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
         }
 
-        /* Formulário Checkout */
+        /* Checkout */
         #checkout-form input, #checkout-form select {
-            width: 100%; padding: 12px; margin-bottom: 12px; border: 1px solid var(--border-color);
-            border-radius: 8px; font-size: 1rem;
+            width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid var(--border-color);
+            border-radius: 10px; font-size: 1rem; outline: none;
         }
-        .checkout-title { margin: 20px 0 10px; border-top: 2px dashed #eee; padding-top: 20px; color: var(--acai-purple); }
-        .cart-item { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; }
-        .cart-item-title { font-weight: bold; display: flex; justify-content: space-between; color: var(--acai-purple);}
-        .cart-item-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 5px; line-height: 1.4;}
+        .cart-item { border-bottom: 1px solid #eee; padding: 12px 0; }
+        .cart-item-title { font-weight: bold; display: flex; justify-content: space-between; }
+        .cart-item-desc { font-size: 0.85rem; color: var(--text-muted); margin-top: 5px; }
 
-        /* Footer Carrinho */
+        /* Barra Inferior Fixa */
         .cart-bar {
             position: fixed; bottom: 0; width: 100%; background: var(--acai-purple); color: white;
-            padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 25px; display: flex; justify-content: space-between; align-items: center;
             cursor: pointer; z-index: 100; font-weight: bold; border-radius: 15px 15px 0 0;
-            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
         }
         .cart-bar.hidden { display: none; }
     </style>
@@ -129,7 +133,7 @@
         </div>
     </header>
 
-    <main class="menu-container" id="menu-list">
+    <main class="menu-container">
         <h2 class="section-title">Nossos Copos</h2>
         <div id="products-container"></div>
     </main>
@@ -138,13 +142,12 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2 id="modal-title" style="color: var(--acai-purple);">Produto</h2>
-                <p id="modal-desc">Escolha seus acompanhamentos</p>
+                <p id="modal-desc" style="font-size: 0.9rem; color: #666;">Selecione os itens</p>
                 <button class="close-btn" onclick="closeModal('product-modal')">&times;</button>
             </div>
-            <div class="modal-body" id="options-container">
-                </div>
+            <div class="modal-body" id="options-container"></div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="addToCart()">Adicionar - R$ <span id="modal-price">0,00</span></button>
+                <button class="btn-primary" onclick="addToCart()">Adicionar ao Carrinho - R$ <span id="modal-price">0,00</span></button>
             </div>
         </div>
     </div>
@@ -157,20 +160,17 @@
             </div>
             <div class="modal-body">
                 <div id="cart-items"></div>
-                <div style="font-weight: bold; font-size: 1.2rem; margin-top: 10px; text-align: right;">Total: R$ <span id="cart-total-price">0,00</span></div>
+                <div style="font-weight: bold; font-size: 1.3rem; margin: 20px 0; text-align: right;">Total: R$ <span id="cart-total-price">0,00</span></div>
                 
-                <h3 class="checkout-title">Finalizar Pedido</h3>
+                <h3 style="margin-bottom: 15px; color: var(--acai-purple); border-top: 1px dashed #ccc; padding-top: 15px;">Dados para Entrega</h3>
                 <form id="checkout-form">
                     <input type="text" id="cliente-nome" placeholder="Seu Nome Completo" required>
-                    
                     <select id="tipo-entrega" onchange="toggleAddress()" required>
-                        <option value="">Como deseja receber?</option>
+                        <option value="">Forma de recebimento</option>
                         <option value="entrega">Entrega em Domicílio</option>
                         <option value="retirada">Retirar no Local</option>
                     </select>
-
-                    <input type="text" id="cliente-endereco" placeholder="Rua, Número, Bairro, Referência" style="display:none;">
-
+                    <input type="text" id="cliente-endereco" placeholder="Endereço (Rua, Nº, Bairro)" style="display:none;">
                     <select id="forma-pagamento" onchange="toggleTroco()" required>
                         <option value="">Forma de Pagamento</option>
                         <option value="pix">Pix</option>
@@ -178,12 +178,11 @@
                         <option value="debito">Cartão de Débito</option>
                         <option value="dinheiro">Dinheiro</option>
                     </select>
-
-                    <input type="number" id="cliente-troco" placeholder="Troco para quanto? (Ex: 50)" style="display:none;">
+                    <input type="number" id="cliente-troco" placeholder="Troco para quanto?" style="display:none;">
                 </form>
             </div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Enviar para o WhatsApp</button>
+                <button class="btn-primary" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Finalizar no WhatsApp</button>
             </div>
         </div>
     </div>
@@ -191,18 +190,18 @@
     <footer id="cart-bar" class="cart-bar hidden" onclick="openCart()">
         <div class="cart-info">
             <i class="fas fa-shopping-basket"></i>
-            <span id="cart-count" style="margin-left: 8px;">0 itens</span>
+            <span id="cart-count" style="margin-left: 10px;">0 itens</span>
         </div>
-        <div class="cart-total-bar">Ver Carrinho (R$ <span id="bar-total">0,00</span>)</div>
+        <div class="cart-total-bar">R$ <span id="bar-total">0,00</span></div>
     </footer>
 
     <script>
-        // Dados do Cardápio com Imagens
+        // Dados e Imagens Genéricas Estáveis
         const products = [
-            { id: 'playzinho', name: 'Playzinho', price: 12, limit: 1, desc: '1 opção de cada item', img: 'https://images.unsplash.com/photo-1590130985226-62157581abcf?w=200&h=200&fit=crop' },
-            { id: 'playzao', name: 'Playzão', price: 20, limit: 2, desc: 'Até 2 opções de cada item', img: 'https://images.unsplash.com/photo-1626074964019-2aa1738d2a6a?w=200&h=200&fit=crop' },
-            { id: 'playtop', name: 'Playtop', price: 30, limit: 3, desc: 'Até 3 opções de cada item', img: 'https://images.unsplash.com/photo-1556689622-487fb682662c?w=200&h=200&fit=crop' },
-            { id: 'playturbo', name: 'Playturbo', price: 45, limit: 4, desc: 'Até 4 opções de cada item', img: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=200&h=200&fit=crop' }
+            { id: 'playzinho', name: 'Playzinho', price: 12, limit: 1, desc: 'Escolha 1 opção de cada categoria', img: 'https://images.unsplash.com/photo-1590130985226-62157581abcf?w=200' },
+            { id: 'playzao', name: 'Playzão', price: 20, limit: 2, desc: 'Escolha até 2 opções de cada categoria', img: 'https://images.unsplash.com/photo-1626074964019-2aa1738d2a6a?w=200' },
+            { id: 'playtop', name: 'Playtop', price: 30, limit: 3, desc: 'Escolha até 3 opções de cada categoria', img: 'https://images.unsplash.com/photo-1556689622-487fb682662c?w=200' },
+            { id: 'playturbo', name: 'Playturbo', price: 45, limit: 4, desc: 'Escolha até 4 opções de cada categoria', img: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?w=200' }
         ];
 
         const components = [
@@ -215,26 +214,25 @@
 
         const paidExtras = [
             { id: 'nutella', name: 'Nutella', price: 5 },
-            { id: 'pacoca_extra', name: 'Paçoca (Porção Extra)', price: 2 }
+            { id: 'pacoca_extra', name: 'Paçoca Extra', price: 2 }
         ];
 
         let cart = [];
         let currentProduct = null;
         let currentExtrasCost = 0;
 
-        // Inicializa a tela
         document.addEventListener('DOMContentLoaded', () => {
             const container = document.getElementById('products-container');
             products.forEach(p => {
                 container.innerHTML += `
                     <div class="product-card" onclick="openProductModal('${p.id}')">
-                        <img src="${p.img}" class="product-img" alt="${p.name}">
+                        <img src="${p.img}" class="product-img" alt="Açaí">
                         <div class="product-info">
                             <h3>${p.name}</h3>
                             <p>${p.desc}</p>
                             <span class="price">R$ ${p.price.toFixed(2).replace('.', ',')}</span>
                         </div>
-                        <div style="color: var(--acai-purple);"><i class="fas fa-plus-circle fa-2x"></i></div>
+                        <i class="fas fa-plus-circle" style="color: var(--acai-purple); font-size: 1.5rem;"></i>
                     </div>
                 `;
             });
@@ -243,16 +241,13 @@
         function openProductModal(productId) {
             currentProduct = products.find(p => p.id === productId);
             currentExtrasCost = 0;
-            
             document.getElementById('modal-title').innerText = currentProduct.name;
-            document.getElementById('modal-desc').innerText = `Escolha até ${currentProduct.limit} opção(ões) de cada.`;
+            document.getElementById('modal-desc').innerText = `Você pode selecionar até ${currentProduct.limit} de cada:`;
             updateModalPrice();
 
             let html = '';
-            
             components.forEach(cat => {
-                html += `<div class="category-group">
-                    <h4>${cat.name} (Até ${currentProduct.limit})</h4>`;
+                html += `<div class="category-group"><h4>${cat.name}</h4>`;
                 cat.items.forEach(item => {
                     html += `
                         <div class="option-item">
@@ -264,12 +259,12 @@
                 html += `</div>`;
             });
 
-            html += `<div class="category-group"><h4>Adicionais Pagos (Opcional)</h4>`;
+            html += `<div class="category-group"><h4>Adicionais Pagos</h4>`;
             paidExtras.forEach(extra => {
                 html += `
                     <div class="option-item">
                         <input type="checkbox" name="extras_pagos" value="${extra.name}" data-price="${extra.price}" id="extra_${extra.id}" onchange="updateExtrasCost()">
-                        <label for="extra_${extra.id}">${extra.name} <span style="color:var(--accent-pink); font-weight:bold;">(+ R$ ${extra.price.toFixed(2).replace('.', ',')})</span></label>
+                        <label for="extra_${extra.id}">${extra.name} (+ R$ ${extra.price.toFixed(2)})</label>
                     </div>
                 `;
             });
@@ -283,7 +278,7 @@
             const checkedBoxes = document.querySelectorAll(`input[name="${categoryId}"]:checked`);
             if (checkedBoxes.length > limit) {
                 checkbox.checked = false;
-                alert(`O ${currentProduct.name} permite apenas ${limit} opção(ões) na categoria ${categoryId.toUpperCase()}.`);
+                alert(`O ${currentProduct.name} permite no máximo ${limit} item(ns) de ${categoryId}.`);
             }
         }
 
@@ -296,33 +291,23 @@
         }
 
         function updateModalPrice() {
-            const total = currentProduct.price + currentExtrasCost;
-            document.getElementById('modal-price').innerText = total.toFixed(2).replace('.', ',');
+            document.getElementById('modal-price').innerText = (currentProduct.price + currentExtrasCost).toFixed(2).replace('.', ',');
         }
 
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-        }
+        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
         function addToCart() {
             const selections = {};
-            
             components.forEach(cat => {
-                const checked = Array.from(document.querySelectorAll(`input[name="${cat.id}"]:checked`)).map(cb => cb.value);
-                selections[cat.name] = checked;
+                selections[cat.name] = Array.from(document.querySelectorAll(`input[name="${cat.id}"]:checked`)).map(cb => cb.value);
             });
-
-            const extras = Array.from(document.querySelectorAll(`input[name="extras_pagos"]:checked`)).map(cb => {
-                return { name: cb.value, price: parseFloat(cb.getAttribute('data-price')) };
-            });
-
-            const itemTotal = currentProduct.price + currentExtrasCost;
+            const extras = Array.from(document.querySelectorAll(`input[name="extras_pagos"]:checked`)).map(cb => cb.value);
 
             cart.push({
-                product: currentProduct,
+                name: currentProduct.name,
                 selections: selections,
                 extras: extras,
-                total: itemTotal
+                total: currentProduct.price + currentExtrasCost
             });
 
             closeModal('product-modal');
@@ -330,105 +315,64 @@
         }
 
         function updateCartUI() {
-            const cartBar = document.getElementById('cart-bar');
-            if (cart.length > 0) {
-                cartBar.classList.remove('hidden');
-                document.getElementById('cart-count').innerText = `${cart.length} item(ns)`;
-                
-                const totalCart = cart.reduce((sum, item) => sum + item.total, 0);
-                document.getElementById('bar-total').innerText = totalCart.toFixed(2).replace('.', ',');
-                document.getElementById('cart-total-price').innerText = totalCart.toFixed(2).replace('.', ',');
-            } else {
-                cartBar.classList.add('hidden');
-            }
+            const total = cart.reduce((sum, item) => sum + item.total, 0);
+            document.getElementById('cart-bar').classList.toggle('hidden', cart.length === 0);
+            document.getElementById('cart-count').innerText = `${cart.length} item(ns)`;
+            document.getElementById('bar-total').innerText = total.toFixed(2).replace('.', ',');
         }
 
         function openCart() {
             const container = document.getElementById('cart-items');
             container.innerHTML = '';
-
             cart.forEach((item, index) => {
-                let desc = '';
-                for (const [cat, options] of Object.entries(item.selections)) {
-                    if(options.length > 0) desc += `<b>${cat}:</b> ${options.join(', ')}<br>`;
-                }
-                if(item.extras.length > 0) {
-                    desc += `<b>Adicionais Pagos:</b> ${item.extras.map(e => e.name).join(', ')}<br>`;
-                }
+                let desc = Object.entries(item.selections).filter(([k,v]) => v.length > 0).map(([k,v]) => `<b>${k}:</b> ${v.join(', ')}`).join('<br>');
+                if(item.extras.length > 0) desc += `<br><b>Extras:</b> ${item.extras.join(', ')}`;
 
                 container.innerHTML += `
                     <div class="cart-item">
-                        <div class="cart-item-title">
-                            <span>1x ${item.product.name}</span>
-                            <span>R$ ${item.total.toFixed(2).replace('.', ',')}</span>
-                        </div>
+                        <div class="cart-item-title"><span>${item.name}</span><span>R$ ${item.total.toFixed(2)}</span></div>
                         <div class="cart-item-desc">${desc}</div>
-                        <button onclick="removeItem(${index})" style="color: #E91E63; border:none; background:none; margin-top:8px; cursor:pointer; font-weight:bold;"><i class="fas fa-trash"></i> Remover</button>
+                        <button onclick="removeItem(${index})" style="color:red; background:none; border:none; margin-top:10px; cursor:pointer;">Remover</button>
                     </div>
                 `;
             });
-
+            document.getElementById('cart-total-price').innerText = cart.reduce((sum, item) => sum + item.total, 0).toFixed(2).replace('.', ',');
             document.getElementById('cart-modal').classList.add('active');
         }
 
         function removeItem(index) {
             cart.splice(index, 1);
             updateCartUI();
-            if(cart.length === 0) closeModal('cart-modal');
-            else openCart();
+            if(cart.length === 0) closeModal('cart-modal'); else openCart();
         }
 
         function toggleAddress() {
-            const tipo = document.getElementById('tipo-entrega').value;
-            document.getElementById('cliente-endereco').style.display = tipo === 'entrega' ? 'block' : 'none';
-            document.getElementById('cliente-endereco').required = tipo === 'entrega';
+            const val = document.getElementById('tipo-entrega').value;
+            document.getElementById('cliente-endereco').style.display = val === 'entrega' ? 'block' : 'none';
         }
 
         function toggleTroco() {
-            const pgto = document.getElementById('forma-pagamento').value;
-            document.getElementById('cliente-troco').style.display = pgto === 'dinheiro' ? 'block' : 'none';
+            const val = document.getElementById('forma-pagamento').value;
+            document.getElementById('cliente-troco').style.display = val === 'dinheiro' ? 'block' : 'none';
         }
 
         function sendWhatsApp() {
-            if (cart.length === 0) return alert('Seu carrinho está vazio!');
-            
             const form = document.getElementById('checkout-form');
-            if (!form.checkValidity()) {
-                form.reportValidity();
-                return;
-            }
+            if(!form.checkValidity()) return form.reportValidity();
 
-            const nome = document.getElementById('cliente-nome').value;
-            const tipo = document.getElementById('tipo-entrega').value;
-            const endereco = document.getElementById('cliente-endereco').value;
-            const pag = document.getElementById('forma-pagamento').value;
-            const troco = document.getElementById('cliente-troco').value;
-
-            let text = `*NOVO PEDIDO - PLAY AÇAÍ*%0A%0A`;
-            text += `*Cliente:* ${nome}%0A`;
-            text += `*Tipo:* ${tipo === 'entrega' ? 'Entrega' : 'Retirada no Local'}%0A`;
-            if (tipo === 'entrega') text += `*Endereço:* ${endereco}%0A`;
-            text += `*Pagamento:* ${pag.toUpperCase()}%0A`;
-            if (pag === 'dinheiro' && troco) text += `*Troco para:* R$ ${troco}%0A`;
-            text += `%0A*ITENS DO PEDIDO:*%0A`;
-
-            cart.forEach(item => {
-                text += `------------------------%0A`;
-                text += `*1x ${item.product.name}* - R$ ${item.total.toFixed(2)}%0A`;
-                for (const [cat, options] of Object.entries(item.selections)) {
-                    if(options.length > 0) text += `_${cat}:_ ${options.join(', ')}%0A`;
-                }
-                if(item.extras.length > 0) {
-                    text += `_Adicionais Pagos:_ ${item.extras.map(e => e.name).join(', ')}%0A`;
-                }
+            let msg = `*PEDIDO PLAY AÇAÍ*%0A%0A`;
+            msg += `*Nome:* ${document.getElementById('cliente-nome').value}%0A`;
+            msg += `*Tipo:* ${document.getElementById('tipo-entrega').value}%0A`;
+            if(document.getElementById('cliente-endereco').value) msg += `*Endereço:* ${document.getElementById('cliente-endereco').value}%0A`;
+            msg += `*Pagamento:* ${document.getElementById('forma-pagamento').value}%0A`;
+            
+            msg += `%0A*ITENS:*%0A`;
+            cart.forEach(i => {
+                msg += `- ${i.name} (R$ ${i.total.toFixed(2)})%0A`;
             });
+            msg += `%0A*TOTAL: R$ ${cart.reduce((s, i) => s + i.total, 0).toFixed(2)}*`;
 
-            const totalCart = cart.reduce((sum, item) => sum + item.total, 0);
-            text += `------------------------%0A`;
-            text += `*TOTAL DA COMPRA: R$ ${totalCart.toFixed(2)}*`;
-
-            const zapNumber = '5581995437788';
-            window.open(`https://wa.me/${zapNumber}?text=${text}`, '_blank');
+            window.open(`https://wa.me/5581995437788?text=${msg}`);
         }
     </script>
 </body>
